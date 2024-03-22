@@ -11,9 +11,8 @@ public interface LessonMapper {
 
     LessonMapper INSTANCE = Mappers.getMapper(LessonMapper.class);
 
-
     LessonDTO lessonToLessonDTO(Lesson lesson);
 
-
+    @Mapping(target = "lessonId", ignore = true) // Ignore lessonId when mapping from DTO to entity
     Lesson lessonDTOToLesson(LessonDTO lessonDTO);
 }

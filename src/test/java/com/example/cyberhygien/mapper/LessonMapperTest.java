@@ -2,14 +2,19 @@ package com.example.cyberhygien.mapper;
 
 import com.example.cyberhygien.dto.LessonDTO;
 import com.example.cyberhygien.entity.Lesson;
+import com.example.cyberhygien.mapper.LessonMapper;
 import org.junit.jupiter.api.Test;
+import org.mapstruct.factory.Mappers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LessonMapperTest {
 
+    private final LessonMapper mapper = Mappers.getMapper(LessonMapper.class);
+
     @Test
     public void testLessonToLessonDTO() {
+
         Lesson lesson = new Lesson();
         lesson.setLessonId(1L);
         lesson.setTitle("Sample Title");
@@ -17,7 +22,8 @@ public class LessonMapperTest {
         lesson.setTextContent("Sample Text Content");
         lesson.setImagePath("sample/image/path.jpg");
 
-        LessonDTO lessonDTO = LessonMapper.INSTANCE.lessonToLessonDTO(lesson);
+
+        LessonDTO lessonDTO = mapper.lessonToLessonDTO(lesson);
 
 
         assertEquals(lesson.getLessonId(), lessonDTO.getLessonId());
@@ -29,22 +35,22 @@ public class LessonMapperTest {
 
     @Test
     public void testLessonDTOToLesson() {
-        // Given
+
         LessonDTO lessonDTO = new LessonDTO();
-        lessonDTO.setLessonId(1L);
         lessonDTO.setTitle("Sample Title");
         lessonDTO.setDescription("Sample Description");
         lessonDTO.setTextContent("Sample Text Content");
         lessonDTO.setImagePath("sample/image/path.jpg");
 
-        // When
-        Lesson lesson = LessonMapper.INSTANCE.lessonDTOToLesson(lessonDTO);
 
-        // Then
-        assertEquals(lessonDTO.getLessonId(), lesson.getLessonId());
+        Lesson lesson = mapper.lessonDTOToLesson(lessonDTO);
+
+
         assertEquals(lessonDTO.getTitle(), lesson.getTitle());
         assertEquals(lessonDTO.getDescription(), lesson.getDescription());
         assertEquals(lessonDTO.getTextContent(), lesson.getTextContent());
         assertEquals(lessonDTO.getImagePath(), lesson.getImagePath());
+
+        assertEquals(null, lesson.getLessonId());
     }
 }
