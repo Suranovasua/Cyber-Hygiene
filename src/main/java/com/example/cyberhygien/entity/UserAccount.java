@@ -11,7 +11,7 @@ import lombok.*;
 import javax.validation.constraints.*;
 
 @Entity
-@Table(name = "user_accounts")
+@Table
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

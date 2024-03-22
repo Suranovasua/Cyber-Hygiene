@@ -1,12 +1,13 @@
 package com.example.cyberhygien.entity;
 
+
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-@Table(name = "lesson")
+@Table
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

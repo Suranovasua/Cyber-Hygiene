@@ -1,15 +1,14 @@
 package com.example.cyberhygien.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "progress")
+@Table
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
