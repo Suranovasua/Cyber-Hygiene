@@ -2,10 +2,12 @@ package com.example.cyberhygien.bootstrap;
 
 import com.example.cyberhygien.dto.LessonDTO;
 import com.example.cyberhygien.entity.Lesson;
+import com.example.cyberhygien.entity.ProgressTracking;
 import com.example.cyberhygien.entity.UserAccount;
 import com.example.cyberhygien.mapper.LessonMapper;
 import com.example.cyberhygien.mapper.UserAccountMapper;
 import com.example.cyberhygien.repository.LessonRepository;
+import com.example.cyberhygien.repository.ProgressTrackingRepository;
 import com.example.cyberhygien.repository.UserAccountRepository;
 import jdk.jfr.Registered;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class BootstrapData implements CommandLineRunner {
     private final LessonRepository lessonRepository;
 
     private final UserAccountRepository userAccountRepository;
+
+    private final ProgressTrackingRepository progressTrackingRepository;
 
      public static List<Lesson> generateSampleLessons(int numberOfLessons) {
         List<Lesson> lessons = new ArrayList<>();
@@ -64,5 +69,21 @@ public class BootstrapData implements CommandLineRunner {
 
         List<UserAccount> sampleUserAccounts = generateSampleUserAccounts(10);
         userAccountRepository.saveAll(sampleUserAccounts);
+
+        generateProgressTrackingData(sampleUserAccounts, sampleLessons);
+    }
+
+    private void generateProgressTrackingData(List<UserAccount> userAccounts, List<Lesson> lessons) {
+        for (UserAccount userAccount : userAccounts) {
+            for (Lesson lesson : lessons) {
+                ProgressTracking progressTracking = ProgressTracking.builder()
+                        .userAccount(userAccount)
+                        .lesson(lesson)
+                        .completionStatus(false) // Assuming default completion status
+                        .completionDate(LocalDateTime.now()) // Assuming completion date is current timestamp
+                        .build();
+                progressTrackingRepository.save(progressTracking);
+            }
+        }
     }
 }
