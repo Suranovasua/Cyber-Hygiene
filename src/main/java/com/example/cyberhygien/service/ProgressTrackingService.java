@@ -36,13 +36,20 @@ public class ProgressTrackingService {
     }
 
     public ProgressTrackingDTO updateProgressTracking(Long id, ProgressTrackingDTO progressTrackingDTO) {
-        ProgressTracking progressTracking = progressTrackingRepository.findById(id)
+
+        ProgressTracking existingProgressTracking = progressTrackingRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Progress tracking not found with id: " + id));
 
-        progressTracking = ProgressTrackingMapper.INSTANCE.progressTrackingDTOToProgressTracking(progressTrackingDTO);
-        progressTracking.setId(id);
-        return ProgressTrackingMapper.INSTANCE.progressTrackingToProgressTrackingDTO(progressTrackingRepository.save(progressTracking));
+
+        existingProgressTracking.setCompletionStatus(progressTrackingDTO.getCompletionStatus());
+        existingProgressTracking.setCompletionDate(progressTrackingDTO.getCompletionDate());
+
+
+        ProgressTracking updatedProgressTracking = progressTrackingRepository.save(existingProgressTracking);
+
+        return ProgressTrackingMapper.INSTANCE.progressTrackingToProgressTrackingDTO(updatedProgressTracking);
     }
+
 
     public void deleteProgressTracking(Long id) {
         if (!progressTrackingRepository.existsById(id)) {
