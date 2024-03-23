@@ -2,9 +2,10 @@ package com.example.cyberhygien.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import javax.validation.constraints.*;
 
 @Entity
 @Table

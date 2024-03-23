@@ -1,5 +1,6 @@
 package com.example.cyberhygien.GlobalExceptionHandler;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,13 @@ public class ApplicationExceptionHandler {
             errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
         });
         return errorMap;
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Entity not found: " + ex.getMessage());
     }
 
     @ExceptionHandler(DataAccessException.class)

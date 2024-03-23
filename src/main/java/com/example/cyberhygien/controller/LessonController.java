@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,7 @@ public class LessonController {
     }
 
     @PutMapping("/{lessonId}")
-    public ResponseEntity<LessonDTO> updateLesson(@PathVariable Long lessonId, @Valid @RequestBody LessonDTO lessonDTO) {
+    public ResponseEntity<LessonDTO> updateLesson(@PathVariable Long lessonId, @RequestBody LessonDTO lessonDTO) {
         LessonDTO updatedLesson = lessonService.updateLesson(lessonId, lessonDTO);
         return ResponseEntity.ok(updatedLesson);
     }
