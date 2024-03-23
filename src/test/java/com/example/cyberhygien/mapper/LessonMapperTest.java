@@ -2,7 +2,6 @@ package com.example.cyberhygien.mapper;
 
 import com.example.cyberhygien.dto.LessonDTO;
 import com.example.cyberhygien.entity.Lesson;
-import com.example.cyberhygien.mapper.LessonMapper;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
