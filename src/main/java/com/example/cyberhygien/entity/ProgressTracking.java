@@ -4,7 +4,7 @@ package com.example.cyberhygien.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Entity
