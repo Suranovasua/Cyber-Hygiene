@@ -1,6 +1,7 @@
 package com.example.cyberhygien.entity;
 
 
+import com.example.cyberhygien.security.entities.User;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,7 +23,7 @@ public class ProgressTracking {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private UserAccount userAccount;
+    private User userAccount;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)

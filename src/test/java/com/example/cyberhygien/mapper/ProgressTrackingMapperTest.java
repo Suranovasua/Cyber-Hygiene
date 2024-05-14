@@ -3,7 +3,6 @@ package com.example.cyberhygien.mapper;
 import com.example.cyberhygien.dto.ProgressTrackingDTO;
 import com.example.cyberhygien.entity.Lesson;
 import com.example.cyberhygien.entity.ProgressTracking;
-import com.example.cyberhygien.entity.UserAccount;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

@@ -1,11 +1,8 @@
 package com.example.cyberhygien.exceptionhandler;
 
 import com.example.cyberhygien.dto.ProgressTrackingDTO;
-import com.example.cyberhygien.entity.ProgressTracking;
-import com.example.cyberhygien.mapper.ProgressTrackingMapper;
 import com.example.cyberhygien.repository.LessonRepository;
 import com.example.cyberhygien.repository.ProgressTrackingRepository;
-import com.example.cyberhygien.repository.UserAccountRepository;
 import com.example.cyberhygien.service.ProgressTrackingService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
@@ -13,8 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;

@@ -1,9 +1,7 @@
 package com.example.cyberhygien.repository;
 
 import com.example.cyberhygien.entity.ProgressTracking;
-import com.example.cyberhygien.entity.UserAccount;
 import com.example.cyberhygien.entity.Lesson;
-import com.example.cyberhygien.repository.ProgressTrackingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

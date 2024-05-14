@@ -11,11 +11,11 @@ public interface ProgressTrackingMapper {
 
     ProgressTrackingMapper INSTANCE = Mappers.getMapper(ProgressTrackingMapper.class);
 
-    @Mapping(source = "userAccount.userId", target = "userAccountId")
-    @Mapping(source = "lesson.lessonId", target = "lessonId")
+    @Mapping(source = "userAccount.id", target = "userAccountId")
+    @Mapping(source = "lesson.lessonId", target = "lessonId") // Corrected mapping
     ProgressTrackingDTO progressTrackingToProgressTrackingDTO(ProgressTracking progressTracking);
 
-    @Mapping(source = "userAccountId", target = "userAccount.userId")
-    @Mapping(source = "lessonId", target = "lesson.lessonId")
+    @Mapping(source = "userAccountId", target = "userAccount.id")
+    @Mapping(source = "lessonId", target = "lesson.lessonId") // Corrected mapping
     ProgressTracking progressTrackingDTOToProgressTracking(ProgressTrackingDTO progressTrackingDTO);
 }
